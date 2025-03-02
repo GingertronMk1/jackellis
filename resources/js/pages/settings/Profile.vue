@@ -49,10 +49,10 @@ const submit = () => {
             <div class="flex flex-col space-y-6">
                 <HeadingSmall title="Profile information" description="Update your name and email address" />
 
-                <form @submit.prevent="submit" class="space-y-6">
+                <form class="space-y-6" @submit.prevent="submit">
                     <div class="grid gap-2">
                         <Label for="name">Name</Label>
-                        <Input id="name" class="mt-1 block w-full" v-model="form.name" required autocomplete="name" placeholder="Full name" />
+                        <Input id="name" v-model="form.name" class="mt-1 block w-full" required autocomplete="name" placeholder="Full name" />
                         <InputError class="mt-2" :message="form.errors.name" />
                     </div>
 
@@ -60,9 +60,9 @@ const submit = () => {
                         <Label for="email">Email address</Label>
                         <Input
                             id="email"
+                            v-model="form.email"
                             type="email"
                             class="mt-1 block w-full"
-                            v-model="form.email"
                             required
                             autocomplete="username"
                             placeholder="Email address"
@@ -77,7 +77,7 @@ const submit = () => {
                                 :href="route('verification.send')"
                                 method="post"
                                 as="button"
-                                class="hover:!decoration-current text-foreground underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 ease-out dark:decoration-neutral-500"
+                                class="text-foreground underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 ease-out hover:!decoration-current dark:decoration-neutral-500"
                             >
                                 Click here to resend the verification email.
                             </Link>
